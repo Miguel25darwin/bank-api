@@ -9,13 +9,22 @@ services:
     plan: free
     healthCheckPath: /actuator/health
     envVars:
-      # Injecté automatiquement par Render depuis la base de données ci-dessous
-      - key: DATABASE_URL
+      - key: SPRING_DATASOURCE_URL
         fromDatabase:
           name: bank-api-db
           property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: bank-api-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: bank-api-db
+          property: password
       - key: SPRING_PROFILES_ACTIVE
         value: prod
+      - key: PORT
+        value: 8080
   # ================================================================
   #  Base de données PostgreSQL géré par Render
   # ================================================================
