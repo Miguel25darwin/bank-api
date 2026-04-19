@@ -9,10 +9,18 @@ services:
     plan: free
     healthCheckPath: /actuator/health
     envVars:
-      - key: SPRING_DATASOURCE_URL
+      - key: DB_HOST
         fromDatabase:
           name: bank-api-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: bank-api-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: bank-api-db
+          property: database
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: bank-api-db
