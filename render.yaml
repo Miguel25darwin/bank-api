@@ -1,0 +1,26 @@
+services:
+  # ================================================================
+  #  Web Service — API Spring Boot
+  # ================================================================
+  - type: web
+    name: bank-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /actuator/health
+    envVars:
+      # Injecté automatiquement par Render depuis la base de données ci-dessous
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bank-api-db
+          property: connectionString
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+  # ================================================================
+  #  Base de données PostgreSQL géré par Render
+  # ================================================================
+databases:
+  - name: bank-api-db
+    plan: free
+    databaseName: bankdb
+    user: bankuser

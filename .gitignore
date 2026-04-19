@@ -1,0 +1,29 @@
+# ================================================================
+#  Bank API — .gitignore
+# ================================================================
+
+# Maven
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Spring Boot logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (ne jamais commiter)
+*.env
+application-local.properties
